@@ -1,6 +1,8 @@
 function PageTwo(){
     return(
-        <></>
+        <>
+        <div>PageTwo页面</div>
+        </>
     )
 }
-export default PagePageTwoOne
+export default PageTwo

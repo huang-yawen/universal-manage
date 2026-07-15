@@ -1,37 +1,47 @@
-import Main from '../pages/main'
+import { Navigate, Outlet } from 'react-router'
 import Home from '../pages/Home'
 import { createBrowserRouter } from "react-router";
 import Mall from '../pages/Mall'
 import User from '../pages/User'
-import Other from '../pages/User'
-import PageTwo from '../pages/other/PageTwo'
+import PageOne from '../pages/other/pageOne'
+import PageTwo from '../pages/other/pageTwo'
+import Main from '../pages/main';
 const routes = [
     {
         path: '/',
         element: <Main />,
         children: [
             {
+                index: true,
+                element: <Navigate to="/home" replace />
+            },
+            {
                 path: 'home',
                 element: <Home />
             },
             {
-                path:'mall',
+                path: 'mall',
                 element: <Mall />
             },
             {
-                path:'user',
-                element:<User />
+                path: 'user',
+                element: <User />
             },
             {
-                path:'other',
-                children:[
+                path: 'other',
+                element: <Outlet />,
+                children: [
                     {
-                        path:'pageOne',
-                        element:<PageOne />
+                        index: true,
+                        element: <Navigate to="/other/pageOne" replace />
                     },
                     {
-                        path:'PageTwo',
-                        element:<PageTwo />
+                        path: 'pageOne',
+                        element: <PageOne />
+                    },
+                    {
+                        path: 'PageTwo',
+                        element: <PageTwo />
                     }
                 ]
             }
